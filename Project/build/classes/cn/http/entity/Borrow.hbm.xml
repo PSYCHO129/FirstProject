@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="cn.http.entity">
+	<class name="Borrow" table="borrowinfo">
+		<id name="biid" column="biid">
+			<generator class="increment"/>
+		</id>
+		<property name="uname" column="uname"/>
+		<property name="bname" column="bname"/>
+		<property name="borrowdate" column="borrowdate"/>
+		<property name="returndate" column="returndate"/>
+	</class>
+</hibernate-mapping>

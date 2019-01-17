@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    
+    
+<struts>
+	<constant name="struts.objectFactory" value="spring"/>
+	<package name="default" namespace="/" extends="struts-default,json-default">
+		
+		
+		<!-- 还书申请 -->
+		<action name="return_*" class="returnAction" method="{1}">
+			<result name="allreturn" type="json">
+				<param name="root">list</param>
+			</result>
+			<result name="getreturn" type="json">
+				<param name="root">returninfo</param>
+			</result>
+		</action>
+		
+		<!-- 销毁记录 -->
+		<action name="destroy_*" class="destroyAction" method="{1}">
+			<result name="alldestroy" type="json">
+				<param name="root">list</param>
+			</result>
+		</action>
+		
+		<!-- 类型推荐表 -->
+		<action name="recommendtype_*" class="recommendTypeAction" method="{1}">
+			<result name="allrecommendtype" type="json">
+				<param name="root">list</param>
+			</result>
+		</action>
+		
+		
+		<!-- 图书推荐表 -->
+		<action name="recommendbook_*" class="recommendBookAction" method="{1}">
+			<result name="allrecommendbook" type="json">
+				<param name="root">list</param>
+			</result>
+		</action>
+	
+	
+		<!-- 借阅信息表 -->
+		<action name="borrow_*" class="borrowAction" method="{1}">
+			<result name="allborrow" type="json">
+				<param name="root">list</param>
+			</result>
+			<result name="getborrow" type="json">
+				<param name="root">borrow</param>
+			</result>
+		</action>
+	
+		<!-- 用户信息表 -->
+		<action name="adminSeeUser_*" class="adminSeeUserAction" method="{1}">
+			<result name="alluser" type="json">
+				<param name="root">list</param>
+			</result>
+			<result name="getuser" type="json">
+				<param name="root">user</param>
+			</result>
+		</action>
+	
+	
+	
+		<!-- 登录 -->
+		<action name="login_*" class="loginAction" method="{1}">
+			<result name="login_user">/all2.jsp</result>
+			<result name="login_admin">/all.jsp</result>
+		</action> 
+		
+		
+		<!-- 管理员信息表 -->
+		<action name="admin_*" class="adminAction" method="{1}">
+			<result name="alladmin" type="json">
+				<param name="root">list</param>
+			</result>
+			<result name="getadmin" type="json">
+				<param name="root">admin</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		<!-- 图书类型信息表 -->
+		<action name="type_*" class="typeAction" method="{1}">
+			<result name="alltype" type="json">
+				<param name="root">list</param>
+			</result>
+			<result name="gettype" type="json">
+				<param name="root">type</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		<!-- 图书信息表 -->
+		<action name="book_*" class="bookAction" method="{1}">
+			<result name="allbook" type="json">
+				<param name="root">books</param>
+			</result>
+			<result name="getbook" type="json">
+				<param name="root">book</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

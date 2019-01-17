@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+       
+       
+       <!-- 还书申请的注入 -->
+       <bean id="returnAction" class="cn.http.action.ReturnAction" scope="prototype">
+       		<property name="returnService" ref="returnService"/>
+       </bean>
+       <bean id="returnService" class="cn.http.service.impl.ReturnServiceImpl">
+       		<property name="returnDao" ref="returnDao"/>
+       </bean>
+       <bean id="returnDao" class="cn.http.dao.impl.ReturnDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory"/>
+       </bean>
+       
+       
+       <!-- 销毁记录的注入 -->
+       <bean id="destroyAction" class="cn.http.action.DestroyAction" scope="prototype">
+       		<property name="destroyService" ref="destroyService"/>
+       </bean>
+       <bean id="destroyService" class="cn.http.service.impl.DestroyServiceImpl">
+       		<property name="destroyDao" ref="destroyDao"/>
+       </bean>
+       <bean id="destroyDao" class="cn.http.dao.impl.DestroyDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory"/>
+       </bean>
+       
+       <!-- 类型推荐的注入 -->
+       <bean id="recommendTypeAction" class="cn.http.action.RecommendTypeAction" scope="prototype">
+       		<property name="recommendTypeService" ref="recommendTypeService"/>
+       </bean>
+       <bean id="recommendTypeService" class="cn.http.service.impl.RecommendTypeServiceImpl">
+       		<property name="recommendTypeDao" ref="recommendTypeDao"/>
+       </bean>
+       <bean id="recommendTypeDao" class="cn.http.dao.impl.RecommendTypeDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory"/>
+       </bean>
+       
+       
+       <!-- 推荐表的注入 -->
+       <bean id="recommendBookAction" class="cn.http.action.RecommendBookAction" scope="prototype">
+       		<property name="recommendBookService" ref="recommendBookService"/>
+       </bean>
+       <bean id="recommendBookService" class="cn.http.service.impl.RecommendBookServiceImpl">
+       		<property name="recommendBookDao" ref="recommendBookDao"/>
+       </bean>
+       <bean id="recommendBookDao" class="cn.http.dao.impl.RecommendBookDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory"/>
+       </bean>
+       
+       
+       <!-- 借阅表的注入 -->
+       <bean id="borrowAction" class="cn.http.action.BorrowAction" scope="prototype">
+       		<property name="borrowService" ref="borrowService"/>
+       </bean>
+       <bean id="borrowService" class="cn.http.service.impl.BorrowServiceImpl">
+       		<property name="borrowDao" ref="borrowDao"/>
+       </bean>
+       <bean id="borrowDao" class="cn.http.dao.impl.BorrowDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory"/>
+       </bean>
+       
+       
+       <!-- 用户表的注入 -->
+       <bean id="adminSeeUserAction" class="cn.http.action.AdminSeeUserAction" scope="prototype">
+       		<property name="adminSeeUserService" ref="adminSeeUserService"/>
+       </bean>
+       <bean id="adminSeeUserService" class="cn.http.service.impl.AdminSeeUserServiceImpl">
+       		<property name="adminSeeUserDao" ref="adminSeeUserDao"/>
+       </bean>
+       <bean id="adminSeeUserDao" class="cn.http.dao.impl.AdminSeeUserDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory"/>
+       </bean>
+       
+       
+       <!-- 管理员表的注入 -->
+       <bean id="adminAction" class="cn.http.action.AdminAction" scope="prototype">
+       		<property name="adminService" ref="adminService"/>
+       </bean>
+       <bean id="adminService" class="cn.http.service.impl.AdminServiceImpl">
+       		<property name="adminDao" ref="adminDao"/>
+       </bean>
+       <bean id="adminDao" class="cn.http.dao.impl.AdminDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory"/>
+       </bean>
+       
+       <!-- 图书信息表的注入 -->
+       <bean id="bookAction" class="cn.http.action.BookAction" scope="prototype">
+       		<property name="bookService" ref="bookService"/>
+       </bean>
+       <bean id="bookService" class="cn.http.service.impl.BookServiceImpl">
+       		<property name="bookDao" ref="bookDao"/>
+       </bean>
+       <bean id="bookDao" class="cn.http.dao.impl.BookDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory"/>
+       </bean>
+       
+       
+       
+       <!-- 类别表注入 -->
+       <bean id="typeAction" class="cn.http.action.TypeAction" scope="prototype">
+       		<property name="typeService" ref="typeService"/>
+       </bean>
+       <bean id="typeService" class="cn.http.service.impl.TypeServiceImpl">
+       		<property name="typeDao" ref="typeDao"/>
+       </bean>
+       <bean id="typeDao" class="cn.http.dao.impl.TypeDaoImpl">
+       		<property name="sessionFactory" ref="sessionFactory"/>
+       </bean>
+       
+       
+       
+	<!-- 登录注入 -->
+	<bean id="loginAction" class="cn.http.action.LoginAction" scope="prototype">
+		<property name="loginUserService" ref="loginUserService"></property>
+		<property name="loginAdminService" ref="loginAdminService"></property>
+	</bean>
+	<bean id="loginUserService" class="cn.http.service.impl.LoginUserServiceImpl">
+		<property name="loginUserDao" ref="loginUserDao"></property>
+	</bean>
+	<bean id="loginAdminService" class="cn.http.service.impl.LoginAdminServiceImpl">
+		<property name="loginAdminDao" ref="loginAdminDao"></property>
+	</bean>
+	<bean id="loginUserDao" class="cn.http.dao.impl.LoginUserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="loginAdminDao" class="cn.http.dao.impl.LoginAdminDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/library" />
+		<property name="username" value="root" />
+		<property name="password" value="123" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:cn/http/entity/User.hbm.xml</value>
+				<value>classpath:cn/http/entity/Admin.hbm.xml</value>
+				<value>classpath:cn/http/entity/Type.hbm.xml</value>
+				<value>classpath:cn/http/entity/Book.hbm.xml</value>
+				<value>classpath:cn/http/entity/Borrow.hbm.xml</value>
+				<value>classpath:cn/http/entity/RecommendBook.hbm.xml</value>
+				<value>classpath:cn/http/entity/RecommendType.hbm.xml</value>
+				<value>classpath:cn/http/entity/Destroy.hbm.xml</value>
+				<value>classpath:cn/http/entity/Return.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 配置事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 配置事务的传播性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="edit*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="login" propagation="REQUIRED" />
+			<tx:method name="*" read-only="true" rollback-for="Exception"
+				propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 使用aop管理 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* cn.http.service.impl.*.*(..))"
+			id="txPointcut" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
+	</aop:config>
+
+</beans>
